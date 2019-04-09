@@ -1,0 +1,21 @@
+# /etc/hosts
+192.168.0.5	pat
+192.168.0.9     master
+192.168.0.13	worker-0
+192.168.0.17	worker-1
+192.168.0.21	worker-2
+192.168.0.25	worker-3
+192.168.0.29	worker-4
+192.168.0.33	worker-5
+192.168.0.37	worker-6
+192.168.0.41	worker-7
+192.168.0.45	worker-8
+192.168.0.49	worker-9
+192.168.0.53	worker-10
+
+# /etc/dhcpcd.conf
+interface eth0
+static ip_address=192.168.0.*
+
+# /etc/hostname
+worker-0 (for 192.168.0.13, name will vary per device)

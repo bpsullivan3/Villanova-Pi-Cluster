@@ -1,0 +1,38 @@
+# Various Scripts/Processes used during the hadoop set-up process
+
+# Create HDFS locations:
+sudo mkdir -p ~/hadoop_tmp/hdfs/namenode # for master node
+sudo mkdir -p ~/hadoop_tmp/hdfs/datanode # for worker nodes
+
+# Add one line to HADOOP_HOME/etc/hadoop/hadoop-env.sh:
+export JAVA_HOME=/usr/lib/jvm/jdk-8-oracle-arm32-vfp-hflt/jre
+
+# Copy Config Files to all nodes:
+scp HADOOP_HOME/etc/hadoop/* pi@worker-{*}:HADOOP_HOME/etc/hadoop
+
+# Format the master node and start the service
+cd HADOOP_HOME
+./bin/hdfs namenode -format
+./sbin/start-yarn.sh
+./sbin/start-dfs.sh
+
+# Verify the Cluster is Active
+HADOOP_HOME/bin/hdfs dfsadmin -report
+jsp
+
+# jsp should return something similar to the following:
+# master node:
+1955 SecondaryNameNode
+2101 Jps
+1291 ResourceManager
+1758 NameNode
+
+# data nodes:
+7016 Jps
+6714 NodeManager
+6895 DataNode
+
+# Kill and clean up processes
+HADOOP_HOME/sbin/stop-all.sh
+rm -f ~/hadoop_tmp/hdfs/datanode/*
+

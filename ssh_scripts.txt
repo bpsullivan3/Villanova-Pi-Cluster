@@ -1,0 +1,14 @@
+ssh-keygen -t rsa -b 4096
+ssh-copy-id pat
+ssh-copy-id master
+ssh-copy-id worker-0
+ssh-copy-id worker-1
+ssh-copy-id worker-2
+ssh-copy-id worker-3
+ssh-copy-id worker-4
+ssh-copy-id worker-5
+ssh-copy-id worker-6
+ssh-copy-id worker-7
+ssh-copy-id worker-8
+ssh-copy-id worker-9
+ssh-copy-id worker-10

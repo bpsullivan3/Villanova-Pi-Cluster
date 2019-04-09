@@ -1,0 +1,13 @@
+# Install spark
+cd /home/hadoop
+wget url/to/spark/version
+tar -xvf spark-2.3.2-bin-hadoop2.7.tgz
+mv spark-2.3.2-bin-hadoop2.7 spark
+
+# Submit example spark job
+spark-submit --deploy-mode client \
+               --class org.apache.spark.examples.SparkPi \
+               $SPARK_HOME/examples/jars/spark-examples_2.11-2.2.0.jar 10
+               
+# Access active spark jobs
+http://master:18080
